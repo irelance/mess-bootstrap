@@ -72,7 +72,11 @@ MessBootstrap.required = {$: {name: 'jQuery'}};
             element.html(table);
         };
         this.append = function (element, values) {
-            element.find('tbody').append(this.template(values));
+            if (options.append == 'top') {
+                element.find('tbody').prepend(this.template.tr(values));
+            } else {
+                element.find('tbody').append(this.template.tr(values));
+            }
         };
     };
     MessBootstrap.Button = function (options) {
@@ -81,3 +85,4 @@ MessBootstrap.required = {$: {name: 'jQuery'}};
         }
     }
 })();
+
